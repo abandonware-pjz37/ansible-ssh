@@ -1,0 +1,21 @@
+galaxy_info:
+  author: Ruslan Baratov
+  description: Increase SSH service security
+  issue_tracker_url: https://github.com/ansible-stuff/ssh/issues
+
+  license: BSD
+
+  min_ansible_version: 1.2
+
+  github_branch: master
+
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+
+  galaxy_tags:
+    - security
+    - ssh
+
+dependencies: []
