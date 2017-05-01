@@ -8,7 +8,7 @@ Ansible role for increasing the security of SSH service.
 
 **!!! WARNING:** This script will disable SSH password authentication.
 If password based authentication is only way to use SSH you will
-**not be able to connect** to remote machine anymore **!!**
+**not be able to connect** to remote machine anymore **!!!**
 
 Run Playbook
 ------------
