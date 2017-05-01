@@ -1,0 +1,4 @@
+[ssh]
+# Ubuntu 16.04 doesn't have Python2, workaround:
+# * http://stackoverflow.com/a/41429731/2288008
+10x.10x.10x.10x ansible_python_interpreter=/usr/bin/python3 ansible_user=root
