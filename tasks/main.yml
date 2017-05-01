@@ -1,0 +1,30 @@
+---
+
+# https://help.ubuntu.com/community/SSH/OpenSSH/Configuring#Disable_Password_Authentication
+- name: Disable Password Authentication
+  action: lineinfile dest=/etc/ssh/sshd_config regexp="^PasswordAuthentication" line="PasswordAuthentication no" state=present
+  notify: Restart SSH service
+
+# https://apple.stackexchange.com/a/84574/138293
+- name: Disable Password Authentication (ChallengeResponseAuthentication)
+  action: lineinfile dest=/etc/ssh/sshd_config regexp="^ChallengeResponseAuthentication" line="ChallengeResponseAuthentication no" state=present
+  notify: Restart SSH service
+
+# https://help.ubuntu.com/community/SSH/OpenSSH/Configuring#Disable_Forwarding
+- name: Disable Forwarding (TCP)
+  action: lineinfile dest=/etc/ssh/sshd_config regexp="^AllowTcpForwarding" line="AllowTcpForwarding no" state=present
+  notify: Restart SSH service
+
+# https://help.ubuntu.com/community/SSH/OpenSSH/Configuring#Disable_Forwarding
+- name: Disable Forwarding (X11)
+  action: lineinfile dest=/etc/ssh/sshd_config regexp="^X11Forwarding" line="X11Forwarding no" state=present
+  notify: Restart SSH service
+
+# https://help.ubuntu.com/community/SSH/OpenSSH/Configuring#Rate-limit_the_connections
+- name: Rate-limit the connections
+  action: lineinfile dest=/etc/ssh/sshd_config regexp="^MaxStartups" line="MaxStartups 2:30:10" state=present
+  notify: Restart SSH service
+
+- name: Authorize keys file
+  action: lineinfile dest=/etc/ssh/sshd_config regexp="^AuthorizedKeysFile" line="AuthorizedKeysFile %h/.ssh/authorized_keys" state=present
+  notify: Restart SSH service
